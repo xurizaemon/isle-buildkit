@@ -38,7 +38,7 @@ ARG \
   MARIADB_CLIENT_VERSION=10.11.11-r0 \
   # renovate: datasource=repology depName=alpine_3_20/mysql-client
   MYSQL_CLIENT_VERSION=10.11.11-r0 \
-  # renovate: datasource=repology depName=alpine_3_20/netcat-openbsd	
+  # renovate: datasource=repology depName=alpine_3_20/netcat-openbsd
   NETCAT_OPENBSD_VERSION=1.226-r0 \
   # renovate: datasource=repology depName=alpine_3_20/openssl
   OPENSSL_VERSION=3.3.3-r0 \
@@ -79,6 +79,8 @@ RUN --mount=type=cache,id=base-apk-${TARGETARCH},sharing=locked,target=/var/cach
         util-linux=="${UTIL_LINUX_VERSION}" \
         wget=="${WGET_VERSION}" \
         yq=="${YQ_VERSION}" \
+        collectd \
+        collectd-disk \
     && \
     addgroup -g 2000 jwt && \
     echo '' > /root/.ash_history
