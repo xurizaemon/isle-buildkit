@@ -14,6 +14,7 @@ RUN --mount=type=cache,id=mariadb-apk-${TARGETARCH},sharing=locked,target=/var/c
     apk add \
         mariadb=="${MARIADB_VERSION}" \
         mariadb-server-utils=="${MARIADB_VERSION}" \
+        collectd-mysql mariadb-backup pigz \
     && \
     mkdir -p \
         /var/lib/mysql \
@@ -30,7 +31,7 @@ RUN --mount=type=cache,id=mariadb-apk-${TARGETARCH},sharing=locked,target=/var/c
 # hardware.
 ENV S6_CMD_WAIT_FOR_SERVICES_MAXTIME=600000
 
-ENV \ 
+ENV \
     # Default Mariadb value of 16 MB (bytes)
     MYSQL_MAX_ALLOWED_PACKET=16777216 \
     MYSQL_TRANSACTION_ISOLATION=READ-COMMITTED
